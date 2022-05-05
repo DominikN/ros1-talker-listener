@@ -1,0 +1,23 @@
+# Quick Start
+# Test a basic ROS 1 communication on Localhost
+# $ docker compose up
+
+services:
+
+  ros-master:
+    image: ros:noetic-ros-core
+    command: stdbuf -o L roscore
+
+  talker:
+    build: .
+    tty: true
+    environment:
+      - ROS_MASTER_URI=http://ros-master:11311
+    command: rosrun roscpp_tutorials talker
+
+  listener:
+    build: .
+    tty: true
+    environment:
+      - ROS_MASTER_URI=http://ros-master:11311
+    command: rosrun roscpp_tutorials listener

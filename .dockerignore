@@ -1,0 +1,6 @@
+.env.template
+.env
+compose*
+Dockerfile
+LICENSE
+README.md
