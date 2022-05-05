@@ -6,21 +6,30 @@ services:
   ros-master:
     image: ros:noetic-ros-core
     network_mode: service:husarnet-talker
+    tty: true
     environment:
-      - ROS_MASTER_URI=http://master:11311
-      - ROS_HOSTNAME=master
       - ROS_IPV6=on
     command: stdbuf -o L roscore
 
-  talker:
+  talker1:
     build: .
     network_mode: service:husarnet-talker
     tty: true
     environment:
-      - ROS_MASTER_URI=http://master:11311
-      - ROS_HOSTNAME=master
       - ROS_IPV6=on
+      - ROS_MASTER_URI=http://talker-host:11311
+      - ROS_HOSTNAME=talker-host
     command: rosrun roscpp_tutorials talker
+
+  talker2:
+    build: .
+    network_mode: service:husarnet-talker
+    tty: true
+    environment:
+      - ROS_IPV6=on
+      - ROS_MASTER_URI=http://talker-host:11311
+      - ROS_HOSTNAME=talker-host
+    command: bash -c "sleep 10 && rosrun roscpp_tutorials talker __name:=talker2"
 
   husarnet-talker:
     image: husarnet/husarnet

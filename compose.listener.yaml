@@ -8,8 +8,9 @@ services:
     network_mode: service:husarnet-listener
     tty: true
     environment:
-      - ROS_MASTER_URI=http://master:11311
       - ROS_IPV6=on
+      - ROS_MASTER_URI=http://talker-host:11311
+      - ROS_HOSTNAME=listener-host
     command: rosrun roscpp_tutorials listener
 
   husarnet-listener:

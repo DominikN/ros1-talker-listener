@@ -43,7 +43,7 @@ docker compose up
 
 ## ROS 1 Talker/Listener demo over the Internet
 
-At first get you JoinCode on your account at https://app.husarnet.com and place it in the `.env` file, eg.:
+At first find your **Husarnet JoinCode** on your account at https://app.husarnet.com and paste it in the `.env` file, eg.:
 
 ```
 HUSARNET_JOINCODE=fc94:b01d:1803:8dd8:b293:5c7d:7639:932a/K5bDunnExmaKDpZJbiMMuV
